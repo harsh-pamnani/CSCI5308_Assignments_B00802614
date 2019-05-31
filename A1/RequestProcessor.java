@@ -208,9 +208,9 @@ public class RequestProcessor implements IRequestProcessor
 		String processedResponse = rp.processRequest(requestJson, authFactroyMock, shipFactoryMock, drugFactoryMock);
 		
 		if(processedResponse.equals(expectedResponseJson)) {
-			System.out.println("PASS - Drug Name Valid - Zero Quantity");
+			System.out.println("PASS - Drug Name Valid - Zero Stock");
 		} else {
-			System.out.println("FAIL - Drug Name Valid - Zero Quantity");
+			System.out.println("FAIL - Drug Name Valid - Zero Stock");
 		}
 	}
 	
@@ -352,9 +352,9 @@ public class RequestProcessor implements IRequestProcessor
 		String processedResponse = rp.processRequest(requestJson, authFactroyMock, shipFactoryMock, drugFactoryMock);
 	
 		if(processedResponse.equals(expectedResponseJson)) {
-			System.out.println("PASS - Stock Insufficient - Zero Quantity");
+			System.out.println("PASS - Stock Insufficient - Zero Stock");
 		} else {
-			System.out.println("FAIL - Stock Insufficient - Zero Quantity");
+			System.out.println("FAIL - Stock Insufficient - Zero Stock");
 		}
 	}
 	

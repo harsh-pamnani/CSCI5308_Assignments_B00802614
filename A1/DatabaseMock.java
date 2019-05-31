@@ -21,7 +21,6 @@ public class DatabaseMock implements IDatabase {
 		drugs.put("Dimeah", 147);
 		drugs.put("Ketamine", 7);
 		drugs.put("Madroix", 350);
-		drugs.put("", 15);
 	}
 	
 	/*
