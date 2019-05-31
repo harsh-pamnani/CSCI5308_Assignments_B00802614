@@ -1,0 +1,15 @@
+{  
+   "apikey":"ab882jjhas8989lkxl;klasdf8u22j",
+   "username":"rhawkey",
+   "action":"SHIP",
+   "drug":"Tylenol",
+   "quantity":100,
+   "address":{  
+      "customer":"Rob Hawkey",
+      "street":"123 Street",
+      "city":"Halifax",
+      "province":"Nova Scotia",
+      "country":"Canada",
+      "postalCode":"H0H0H0"
+   }
+}

@@ -1,0 +1,31 @@
+// This is a success response to a SHIP action
+{  
+   "status":200,
+   "estimateddeliverydate":"01-30-2019"
+}
+
+// These are possible error responses to a SHIP action
+{
+   "status":500,
+   "error":"Authentication Failure"
+}
+
+{
+   "status":500,
+   "error":"Not Authorized"
+}
+
+{
+   "status":500,
+   "error":"Unknown Drug"
+}
+
+{
+   "status":500,
+   "error":"Unknown Address"
+}
+
+{
+   "status":500,
+   "error":"Insufficient Stock"
+}

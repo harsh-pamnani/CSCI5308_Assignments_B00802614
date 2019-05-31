@@ -1,0 +1,22 @@
+// This is a success response to a QUERY action
+{
+   "status":200,
+   "count":100
+}
+
+
+// These are possible error responses to a QUERY action
+{
+   "status":500,
+   "error":"Authentication Failure"
+}
+
+{
+   "status":500,
+   "error":"Not Authorized"
+}
+
+{
+   "status":500,
+   "error":"Unknown Drug"
+}
