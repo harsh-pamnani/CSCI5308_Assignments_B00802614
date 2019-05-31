@@ -178,6 +178,20 @@ public class RequestProcessor implements IRequestProcessor
 		}	
 	}
 	
+	public static void drugNameEmptyTest(RequestProcessor rp, IAuthentication authFactroyMock, IDatabase drugFactoryMock, IShipMate shipFactoryMock) {		
+		RequestQuery reqQuery = new RequestQuery("ab88TRUEklasdf8u22j","rhawkeyQUERY",RequestAction.QUERY.toString(),"");
+		String requestJson = reqQuery.toQueryRequestString();
+		
+		String expectedResponseJson = DefaultFailureResponses.UNKNOWN_DRUG;
+		String processedResponse = rp.processRequest(requestJson, authFactroyMock, shipFactoryMock, drugFactoryMock);
+		
+		if(processedResponse.equals(expectedResponseJson)) {
+			System.out.println("PASS - Drug Name Invalid - Empty Drug Name");
+		} else {
+			System.out.println("FAIL - Drug Name Invalid - Empty Drug Name");
+		}	
+	}
+	
 	public static void drugNameValidTest(RequestProcessor rp, IAuthentication authFactroyMock, IDatabase drugFactoryMock, IShipMate shipFactoryMock) {
 		RequestQuery reqQuery = new RequestQuery("ab88TRUEklasdf8u22j","bobQUERYmike",RequestAction.QUERY.toString(),"Dimeah");
 		String requestJson = reqQuery.toQueryRequestString();
@@ -450,6 +464,7 @@ public class RequestProcessor implements IRequestProcessor
 		
 		// Test cases for Drug Name Validity
 		drugNameInvalidTest(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
+		drugNameEmptyTest(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
 		drugNameValidTestZero(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
 		drugNameValidTest(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
 		
