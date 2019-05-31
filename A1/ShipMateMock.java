@@ -4,6 +4,7 @@ import java.util.List;
 public class ShipMateMock implements IShipMate {
 
 	private List<Address> addresses;
+	private static final String DATE = "22-05-2019";
 	
 	public ShipMateMock() {
 		addresses = new ArrayList<Address>();
@@ -83,7 +84,7 @@ public class ShipMateMock implements IShipMate {
 	@Override
 	public String shipToAddress(Address address, int count, String drugName) throws Exception {
 		if(isKnownAddress(address)) {
-			return "22-05-2019";
+			return DATE;
 		} else {
 			throw new Exception();
 		}
