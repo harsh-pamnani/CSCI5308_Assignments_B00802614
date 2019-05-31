@@ -431,9 +431,9 @@ public class RequestProcessor implements IRequestProcessor
 		String expectedResponseJson = DefaultFailureResponses.INSUFFICIENT_STOCK;
 		
 		if(processedResponse.equals(expectedResponseJson)) {
-			System.out.println("PASS - Ship Drug Twice - To check drug count is maintained");
+			System.out.println("PASS - Stock Insufficient - Ship Drug twice to check drug count is maintained");
 		} else {
-			System.out.println("FAIL - Ship Drug Twice - To check drug count is maintained");
+			System.out.println("FAIL - Stock Insufficient - Ship Drug twice to check drug count is maintained");
 		}
 	}
 
