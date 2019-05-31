@@ -114,6 +114,21 @@ public class RequestProcessor implements IRequestProcessor
 	
 	}
 	
+	public static void authenticateFailureTestEmptyAPIKey(RequestProcessor rp, IAuthentication authFactroyMock, IDatabase drugFactoryMock, IShipMate shipFactoryMock) {
+		RequestQuery reqQuery = new RequestQuery("","brendanQUERY",RequestAction.QUERY.toString(),"Triazolam");
+		String requestJson = reqQuery.toQueryRequestString();
+
+		String processedResponse = rp.processRequest(requestJson, authFactroyMock, shipFactoryMock, drugFactoryMock);
+		String expectedResponseJson = DefaultFailureResponses.AUTHENTICATION_FAILURE;
+		
+		if(processedResponse.equals(expectedResponseJson)) {
+			System.out.println("PASS - Authenticate Failure - Empty API Key");
+		} else {
+			System.out.println("FAIL - Authenticate Failure - Empty API Key");
+		}
+	
+	}
+	
 	public static void authenticateSuccessTest(RequestProcessor rp, IAuthentication authFactroyMock, IDatabase drugFactoryMock, IShipMate shipFactoryMock) {
 		RequestQuery reqQuery = new RequestQuery("ab88TRUEklasdf8u22j","pamnaniQUERY",RequestAction.QUERY.toString(),"Triazolam");
 		String requestJson = reqQuery.toQueryRequestString();
@@ -143,6 +158,20 @@ public class RequestProcessor implements IRequestProcessor
 			System.out.println("PASS - Authorization Failure");
 		} else {
 			System.out.println("FAIL - Authorization Failure");
+		}
+	}
+	
+	public static void authorizationFailureTestEmptyUsername(RequestProcessor rp, IAuthentication authFactroyMock, IDatabase drugFactoryMock, IShipMate shipFactoryMock) {
+		RequestQuery reqQuery = new RequestQuery("ab88TRUEklasdf8u22j","",RequestAction.QUERY.toString(),"Alprazolam");
+		String requestJson = reqQuery.toQueryRequestString();
+		
+		String expectedResponseJson = DefaultFailureResponses.AUTHORIZATION_FAILURE;
+		String processedResponse = rp.processRequest(requestJson, authFactroyMock, shipFactoryMock, drugFactoryMock);
+		
+		if(processedResponse.equals(expectedResponseJson)) {
+			System.out.println("PASS - Authorization Failure - Empty Username");
+		} else {
+			System.out.println("FAIL - Authorization Failure - Empty Username");
 		}
 	}
 	
@@ -456,10 +485,12 @@ public class RequestProcessor implements IRequestProcessor
 
 		// Test cases for Authentication
 		authenticateFailureTest(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);	
+		authenticateFailureTestEmptyAPIKey(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
 		authenticateSuccessTest(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
 		
 		// Test cases for Authorization
 		authorizationFailureTest(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
+		authorizationFailureTestEmptyUsername(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);
 		authorizationSuccessTest(rp, authFactroyMock, drugFactoryMock, shipFactoryMock);		
 		
 		// Test cases for Drug Name Validity
